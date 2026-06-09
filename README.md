@@ -244,6 +244,20 @@ See [docs/authentication.md](docs/authentication.md) for setup guides.
 
 ---
 
+## SDK & Tooling
+
+Terrapod ships first-party Go tooling, all built on a single API client:
+
+| Artifact | Path | Description |
+|---|---|---|
+| Go SDK | [`go-terrapod/`](go-terrapod/) | Strongly-typed Go client for the Terrapod API. Same shape as [`go-tfe`](https://pkg.go.dev/github.com/hashicorp/go-tfe); importable as `github.com/mattrobinsonsre/terrapod/go-terrapod`. |
+| Terraform provider | [`provider/`](provider/) | `terraform-provider-terrapod` — manage Terrapod resources (workspaces, variables, policy sets, …) as HCL. |
+| Migration tool | [`migrate/`](migrate/) | `terrapod-migrate` — import existing TFE / Atlantis configuration into Terrapod. |
+
+The Terraform provider and migration tool both build on the Go SDK, so the API surface is exercised the same way regardless of entry point.
+
+---
+
 ## Documentation
 
 | Document | Description |
