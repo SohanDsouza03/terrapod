@@ -48,3 +48,32 @@ updates:
     labels: [dependencies, ci]
     commit-message:
       prefix: "deps(ci):"
+
+  # The three Go modules each carry their own go.mod / go.sum. Keep
+  # their dependencies patched on the same weekly cadence as the rest.
+  - package-ecosystem: gomod
+    directory: /go-terrapod
+    schedule:
+      interval: weekly
+      day: monday
+    labels: [dependencies, go]
+    commit-message:
+      prefix: "deps(go):"
+
+  - package-ecosystem: gomod
+    directory: /provider
+    schedule:
+      interval: weekly
+      day: monday
+    labels: [dependencies, go]
+    commit-message:
+      prefix: "deps(go):"
+
+  - package-ecosystem: gomod
+    directory: /migrate
+    schedule:
+      interval: weekly
+      day: monday
+    labels: [dependencies, go]
+    commit-message:
+      prefix: "deps(go):"
