@@ -32,7 +32,13 @@ def strip_archive_top_level_dir(archive: bytes) -> bytes:
     """Repack a gzipped tarball, stripping the single top-level directory.
 
     ``owner-repo-sha/variables.tf`` becomes ``variables.tf``, etc.
-    If the archive has no common top-level directory, it is returned unchanged.
+
+    The first path component is always dropped from every member, which is
+    exactly what's needed for GitHub/GitLab archive downloads — they wrap
+    all files in one ``owner-repo-sha/`` directory. As a consequence, any
+    member already at the tarball root (a name with no ``/``) has no second
+    component and is dropped. This is fine for the VCS-download use case,
+    where the wrapper directory is always present.
     """
     in_buf = io.BytesIO(archive)
     out_buf = io.BytesIO()
