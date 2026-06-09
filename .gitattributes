@@ -1,0 +1,22 @@
+# Normalise line endings: everything is LF in the repo regardless of the
+# contributor's OS. Mirrors the end_of_line = lf rule in .editorconfig.
+* text=auto eol=lf
+
+# Shell scripts must stay LF even if checked out on Windows — CRLF breaks
+# the shebang and `set -e` semantics.
+*.sh text eol=lf
+
+# Lock / generated files: keep diffs collapsed in PR review and exclude
+# from GitHub language stats.
+go.sum            linguist-generated=true
+**/package-lock.json linguist-generated=true
+poetry.lock       linguist-generated=true
+
+# Vendored or generated migrations are code but noisy in review.
+alembic/versions/** linguist-generated=true
+
+# Treat common binary doc assets as binary so Git never tries to merge them.
+*.png binary
+*.jpg binary
+*.ico binary
+*.pdf binary
