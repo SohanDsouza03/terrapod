@@ -1,0 +1,44 @@
+# EditorConfig — https://editorconfig.org
+# Baseline whitespace conventions across the Python API, Go SDK/provider,
+# Next.js frontend, Helm charts, and docs. Matches the rules already
+# enforced by ruff (Python), gofmt (Go), and the web ESLint/Prettier setup.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# Python — 4-space indent; line length tracks ruff's line-length = 100.
+[*.py]
+indent_size = 4
+max_line_length = 100
+
+# Go is gofmt-formatted: tabs for indentation.
+[*.go]
+indent_style = tab
+
+# go.mod / go.sum are tab-indented too.
+[go.{mod,sum}]
+indent_style = tab
+
+# Makefiles require literal tabs in recipe lines.
+[Makefile]
+indent_style = tab
+
+# Web sources and config: 2-space (Prettier default).
+[*.{ts,tsx,js,jsx,json,css}]
+indent_size = 2
+
+[*.{yml,yaml}]
+indent_size = 2
+
+[*.md]
+# Markdown can use trailing whitespace for hard line breaks.
+trim_trailing_whitespace = false
+
+[*.sh]
+indent_size = 2
