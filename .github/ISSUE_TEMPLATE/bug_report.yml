@@ -1,0 +1,55 @@
+name: Bug report
+description: Report a problem with Terrapod
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug. Please search existing
+        issues first to avoid duplicates. Do **not** include secrets,
+        tokens, or private state in logs you paste here.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug, including what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps (API calls, UI actions, or CLI commands) that trigger the bug.
+      placeholder: |
+        1. Create a workspace with ...
+        2. Run `tofu plan`
+        3. Observe ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Terrapod version
+      description: Chart/image version (e.g. v0.32.0) or commit SHA.
+    validations:
+      required: true
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - API server (services)
+        - Web UI (web)
+        - Go SDK (go-terrapod)
+        - Terraform provider (provider)
+        - Migration tool (migrate)
+        - Helm chart / deployment
+        - Other / not sure
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Paste any relevant log output. This is automatically formatted as code.
+      render: shell
