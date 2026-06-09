@@ -53,10 +53,15 @@ nav:
   - Architecture: architecture.md
   - Features:
       - VCS Integration: vcs-integration.md
+      - VCS Workflows: vcs-workflows.md
+      - Autodiscovery: autodiscovery.md
       - Drift Detection: drift-detection.md
       - Run Triggers: run-triggers.md
       - Notifications: notifications.md
       - Run Tasks: run-tasks.md
+      - Policies (OPA): policies.md
+      - AI Plan Summary: ai-plan-summary.md
+      - Remote State: remote-state.md
       - Audit Logging: audit-logging.md
       - Health Dashboard: health-dashboard.md
       - Cloud Credentials: cloud-credentials.md
@@ -64,5 +69,16 @@ nav:
       - Authentication: authentication.md
       - RBAC: rbac.md
       - Registry: registry.md
+      - Runners: runners.md
       - Deployment: deployment.md
+      - Network Isolation: deployment-network-isolation.md
+      - Webhook Ingress: deployment-webhook-ingress.md
+      - Monitoring: monitoring.md
+      - Security Hardening: security-hardening.md
+      - Production Checklist: production-checklist.md
+      - Artifact Retention: artifact-retention.md
+      - Disaster Recovery: disaster-recovery.md
+      - Runbooks: runbooks.md
+  - Migration: migration.md
+  - TFE CLI Surface: tfe-cli-surface.md
   - API Reference: api-reference.md
