@@ -72,10 +72,13 @@ func (c *Client) GetPlanSummary(ctx context.Context, planID string) (*PlanSummar
 	if planID == "" {
 		return nil, errors.New("plan id is required")
 	}
-	id := planID
-	if len(id) > 5 && id[:5] != "plan-" {
-		id = "plan-" + id
-	}
+	// Normalise to the prefixed "plan-<uuid>" form. AddPrefix is
+	// idempotent, so a bare UUID gains the prefix and an already-
+	// prefixed id is left untouched. The previous hand-rolled check
+	// (len > 5 && id[:5] != "plan-") skipped short bare ids entirely,
+	// so a bare UUID hit /plans/<uuid>/summary instead of
+	// /plans/plan-<uuid>/summary.
+	id := AddPrefix(planID, "plan-")
 	data, err := c.Get(ctx, "/api/v2/plans/"+url.PathEscape(id)+"/summary")
 	if err != nil {
 		return nil, err
